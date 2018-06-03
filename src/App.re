@@ -1,28 +1,32 @@
 open Friend;
 
-type friends = {
+type results = {
   count: int,
   query: string,
-  results: list(friend),
+  friends: list(friend),
 };
 
-let mockFriends = [
-  {id: 0, name: "Derek", username: "DC"},
-  {id: 1, name: "John", username: "JohnDoe"},
-];
+let mockResults = {
+  count: 2,
+  query: "q",
+  friends: [
+    {id: 0, name: "Derek", username: "DC"},
+    {id: 1, name: "John", username: "JohnDoe"},
+  ],
+};
 
 /* component */
 
 type state = {
   query: string,
-  friends: list(friend),
+  results,
 };
 
 type action =
   | Search
   | SetQuery(string);
 
-let initialState = () => {query: "", friends: mockFriends};
+let initialState = () => {query: "", results: mockResults};
 
 let reducer = (action, state) =>
   switch (action) {
@@ -42,6 +46,6 @@ let make = _children => {
         value=self.state.query
         onInput=(query => self.send(SetQuery(query)))
       />
-      <FriendList friends=self.state.friends />
+      <FriendList friends=self.state.results.friends />
     </div>,
 };

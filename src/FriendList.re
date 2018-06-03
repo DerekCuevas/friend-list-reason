@@ -17,7 +17,7 @@ let make = (~friends, _children) => {
                    <div className="friend">
                      (ReasonReact.string(friend.name))
                      <span className="username">
-                       (ReasonReact.string(" @" ++ friend.username))
+                       (ReasonReact.string(" " ++ friend.username))
                      </span>
                    </div>
                  </li>

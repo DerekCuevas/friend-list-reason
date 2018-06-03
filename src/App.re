@@ -70,16 +70,11 @@ let make = _children => {
         | NotAsked => <p> (ReasonReact.string("Not Asked")) </p>
         | Loading => <p> (ReasonReact.string("Loading...")) </p>
         | Failure =>
-          <div className="error-view">
-            <h5>
-              <span className="error-message">
-                (ReasonReact.string("Sorry! Request Failed. "))
-              </span>
-              <span className="details">
-                (ReasonReact.string("Press enter to try again."))
-              </span>
-            </h5>
-          </div>
+          <Error
+            message="Sorry! Request Failed. "
+            details="Press enter to try again."
+          />
+
         | Success(results) => <FriendList friends=results.friends />
         }
       )

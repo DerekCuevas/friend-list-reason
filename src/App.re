@@ -19,13 +19,15 @@ type state = {
 };
 
 type action =
-  | NoOp;
+  | Search
+  | SetQuery(string);
 
 let initialState = () => {query: "", friends: mockFriends};
 
-let reducer = (action, _state) =>
+let reducer = (action, state) =>
   switch (action) {
-  | NoOp => ReasonReact.NoUpdate
+  | Search => ReasonReact.NoUpdate
+  | SetQuery(query) => ReasonReact.Update({...state, query})
   };
 
 let component = ReasonReact.reducerComponent("App");
@@ -36,7 +38,10 @@ let make = _children => {
   reducer,
   render: self =>
     <div className="app">
-      <SearchInput />
+      <SearchInput
+        value=self.state.query
+        onInput=(query => self.send(SetQuery(query)))
+      />
       <FriendList friends=self.state.friends />
     </div>,
 };

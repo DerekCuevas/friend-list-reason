@@ -1,6 +1,18 @@
 let component = ReasonReact.statelessComponent("SearchInput");
 
-let make = _children => {
+let make = (~value="", ~onInput, _children) => {
   ...component,
-  render: _self => <div> (ReasonReact.string("SearchInput")) </div>,
+  render: _self =>
+    <input
+      className="search-input"
+      type_="search"
+      placeholder="Search Friends"
+      value
+      onInput=(
+        event =>
+          onInput(
+            ReactDOMRe.domElementToObj(ReactEventRe.Form.target(event))##value,
+          )
+      )
+    />,
 };

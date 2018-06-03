@@ -1,5 +1,79 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+}
+
+*:before, *:after {
+  box-sizing: border-box;
+}
+
+.app {
+  margin: 20px auto;
+  max-width: 400px;
+  font-family: Futura;
+}
+
+.friend-list {
+  list-style: none;
+}
+
+.loading {
+  opacity: 0.5;
+}
+
+.friend-list-item {
+  border-radius: 3px;
+  background-color: #eee;
+  padding: 7px;
+  margin: 5px 0;
+}
+
+.friend {
+  color: #555;
+  font-weight: bold;
+}
+
+.username {
+  color: #9aa;
+  font-size: 90%;
+  font-weight: normal;
+}
+
+.error-view {
+  border-radius: 3px;
+  color: #fff;
+  background-color: #ff6157;
+  padding: 7px;
+  margin: 5px 0;
+}
+
+.error-view .error-message {
+  margin-left: 5px;
+}
+
+.error-view .details {
+  font-weight: normal;
+}
+
+.search-input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 35px;
+  font-size: 90%;
+  outline: none;
+  border: 2px solid rgb(219, 228, 237);
+  border-radius: 3px;
+  padding: 0 5px;
+  transition: all 0.30s ease-in-out;
+}
+
+.search-input:focus {
+  border: 2px solid rgb(189, 198, 207);
+}
+
+.stats {
+  color: #9aa;
+  font-size: 80%;
 }

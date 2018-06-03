@@ -1,6 +1,6 @@
 let component = ReasonReact.statelessComponent("SearchInput");
 
-let make = (~value="", ~onInput, _children) => {
+let make = (~value="", ~onInput, ~onEnter, _children) => {
   ...component,
   render: _self =>
     <input
@@ -13,6 +13,14 @@ let make = (~value="", ~onInput, _children) => {
           onInput(
             ReactDOMRe.domElementToObj(ReactEventRe.Form.target(event))##value,
           )
+      )
+      onKeyDown=(
+        event => {
+          let keyCode = ReactEventRe.Keyboard.which(event);
+          if (keyCode == 13) {
+            onEnter();
+          };
+        }
       )
     />,
 };
